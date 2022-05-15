@@ -1,19 +1,20 @@
 package br.com.univille.inteligencia.artificial.deque;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class DequeFactory {
 
-    List<Carta> deque = new ArrayList<>();
+    private List<Carta> dequeList = new ArrayList<>();
 
-    public List<Carta> generateDeque(){
+    private Deque<Carta> deque;
+
+    public Deque<Carta> generateDeque(){
         generateDequeByNaipe("Espadas");
         generateDequeByNaipe("Paus");
         generateDequeByNaipe("Copas");
         generateDequeByNaipe("Ouro");
-        Collections.shuffle(deque);
+        Collections.shuffle(dequeList);
+        Deque<Carta> deque = new ArrayDeque<>(dequeList);
         return deque;
     }
 
@@ -34,6 +35,6 @@ public class DequeFactory {
     }
 
     private void setCarta(String numero, String naipe, int peso){
-        deque.add(new Carta(numero, naipe, peso));
+        dequeList.add(new Carta(numero, naipe, peso));
     }
 }

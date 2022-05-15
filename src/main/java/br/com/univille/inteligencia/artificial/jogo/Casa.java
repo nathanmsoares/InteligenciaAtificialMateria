@@ -3,63 +3,99 @@ package br.com.univille.inteligencia.artificial.jogo;
 import br.com.univille.inteligencia.artificial.deque.Carta;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
+import java.util.Random;
 
 public class Casa {
 
-    private int somaMao;
-
     private boolean casaParou;
-
-    private boolean jogadorParou;
 
     private boolean estadoInicialJogo = true;
 
     private List<Carta> mao = new ArrayList<>();
+
+    private Deque<Carta> deque;
+
+    private Jogo jogo;
+
+    public Casa(Deque<Carta> deque, Jogo jogo) {
+        this.deque = deque;
+        this.jogo = jogo;
+    }
 
     public List<Carta> getMao() {
         return mao;
     }
 
     public int somarMao(){
-        getMao().forEach(carta -> this.somaMao += carta.getPeso());
-        return this.somaMao;
+        return getMao().stream()
+                .mapToInt(carta -> carta.getPeso()).sum();
     }
 
-    public void pedirCarta(List<Carta> deque){
-        getMao().add(
-                deque.remove(deque.size()-1));
-        if (jogadorParou) {
-            mostrarMao();
-        }
+    public void pedirCarta(){
+        getMao().add(deque.removeLast());
         if(somarMao() > 21 && !estadoInicialJogo) {
-            System.out.println(String.format("%s perdeu, sua mão é maior que 21", this.getClass().getName()));
+            mostrarMao();
+            System.out.println("Casa perdeu, mão é maior que 21");
             System.exit(0);
         }
     }
 
+    public void pedirCartaAte(){
+        int somaMao = somarMao();
+        if(somaMao > 18 && somaMao <= 21) {
+            setCasaParou();
+        } else if (somaMao > 16 && somaMao <= 18){
+            if (checkIfItWantsToOrderAnotherCard()){
+                pedirCarta();
+            } else {
+                setCasaParou();
+            }
+        } else {
+            pedirCarta();
+        }
+        mostrarMao();
+    }
+
+    public void pedirPrimeiraMao(){
+        pedirCarta();
+        pedirCarta();
+        estadoInicialJogo = false;
+    }
+
+    private void setCasaParou(){
+        this.casaParou = true;
+        getJogo().setCasaParou(true);
+    }
+
+    public boolean isCasaParou() {
+        return casaParou;
+    }
+
+    private boolean checkIfItWantsToOrderAnotherCard(){
+        Random rand = new Random();
+        rand.nextInt(10);
+        if(rand.nextInt(10) > 8){
+            return true;
+        }
+        return false;
+    }
+
     public void mostrarMaoInicial(){
-        System.out.println(String.format("{%s, X}", mao.get(0)) );
-
-    }
-
-    public boolean isJogadorParou() {
-        return jogadorParou;
-    }
-
-    public void setJogadorParou(boolean jogadorParou) {
-        this.jogadorParou = jogadorParou;
+        System.out.println(String.format("Casa Mão -> {%s, X}", mao.get(0)) );
     }
 
     public void mostrarMao(){
-        System.out.println("Mão "+mao);
+        if(getJogo().isJogadorParou()){
+            System.out.println("Casa Mão -> "+mao);
+        } else {
+            mostrarMaoInicial();
+        }
+
     }
 
-    public void pedirCartaAte(List<Carta> deque){
-        if(somarMao() > 18 && somarMao() <= 20) {
-            this.casaParou = true;
-        } else {
-            pedirCarta(deque);
-        }
+    public Jogo getJogo() {
+        return jogo;
     }
 }
