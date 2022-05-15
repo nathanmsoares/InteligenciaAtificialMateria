@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="147f9a1f-355b-4367-816a-3f24a913bf94" name="Changes" comment="Criado estado inicial do jogo, apenas rascunho no momento">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/deque/DequeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/deque/DequeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/jogo/Casa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/jogo/Casa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/jogo/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/jogo/Jogador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/jogo/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/univille/inteligencia/artificial/jogo/Jogo.java" afterDir="false" />
-    </list>
+    <list default="true" id="147f9a1f-355b-4367-816a-3f24a913bf94" name="Changes" comment="Jogo finalizado" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +87,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Criado estado inicial do jogo, apenas rascunho no momento" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criado estado inicial do jogo, apenas rascunho no momento" />
+    <MESSAGE value="Jogo finalizado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jogo finalizado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
